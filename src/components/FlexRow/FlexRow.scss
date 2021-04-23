@@ -1,15 +1,17 @@
+@import "../../theme.scss";
+
 .Flex {
-  @media screen and (min-width: 768px) {
+  @media screen and ($tablet) {
     display: flex;
     justify-content: space-between;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and ($desktop) {
     display: flex;
     justify-content: space-between;
   }
 
-  @media screen and (min-width: 1300px) {
+  @media screen and ($desktopLarge) {
     display: flex;
     justify-content: space-between;
   }

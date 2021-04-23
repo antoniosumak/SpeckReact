@@ -1,17 +1,19 @@
+@import "../../theme.scss";
+
 .Event-Info {
   font-size: 14px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and ($tablet) {
     font-size: 14px;
     width: 400px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and ($desktop) {
     font-size: 16px;
     width: 600px;
   }
 
-  @media screen and (min-width: 1300px) {
+  @media screen and ($desktopLarge) {
     font-size: 16px;
     width: 800px;
   }
