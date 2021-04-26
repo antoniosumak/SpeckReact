@@ -2,7 +2,15 @@ import React from 'react';
 import Button from '../Button/Button';
 import {Link} from "react-router-dom";
 import './Event.scss';
-
+import {
+    Event as EventWrapper,
+    Figure,
+    Image,
+    Title,
+    Description,
+    imgAlt,
+    route
+} from './EventStyles';
 
 const Event = ({
     image,
@@ -11,16 +19,16 @@ const Event = ({
     buttonText
 }) => {
     return (
-        <div className="Event">
-            <figure className="Event-Figure">
-                <img src={image} alt="Design" className="Event-Image"/>
-            </figure>
-            <h3 className="Event-Title">{title}</h3>
-            <p className="Event-Description">{description}</p>
+        <EventWrapper>
+            <Figure>
+                <Image src={image} alt="Design"/>
+            </Figure>
+            <Title>{title}</Title>
+            <Description>{description}</Description>
             <Link to="/event" className="Event-Link">
                 <Button text={buttonText}/>
             </Link>
-        </div>
+        </EventWrapper>
     );
 }
 
