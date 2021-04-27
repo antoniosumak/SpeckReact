@@ -23,3 +23,20 @@ export const Grid = styled.div`
 `;
 
 export const Main = styled.main``;
+
+export const FlexRow = styled.div`
+  @media screen and (${breakpoints.tablet}) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (${breakpoints.desktop}) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (${breakpoints.desktopLarge}) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
