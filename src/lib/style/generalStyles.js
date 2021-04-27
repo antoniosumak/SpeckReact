@@ -21,3 +21,5 @@ export const Grid = styled.div`
       props.columns === 4 && " grid-template-columns: repeat(4, 1fr); "}
   }
 `;
+
+export const Main = styled.main``;
