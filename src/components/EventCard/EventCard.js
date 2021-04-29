@@ -2,19 +2,11 @@ import React from "react";
 import Button from "../Button/Button";
 import FlexRow from "../FlexRow/FlexRow";
 
-import {
-  Event,
-  Title,
-  Content,
-  Item,
-  ItemTitle,
-  ItemValue,
-} from "./EventsCardStyles";
+import { Event, Content, Item, ItemTitle, ItemValue } from "./EventCardStyles";
 
-const EventsCard = ({ title, location, dateTime, seats, firm, buttonText }) => {
+const EventCard = ({ location, dateTime, seats, firm, buttonText }) => {
   return (
     <Event>
-      <Title>{title}</Title>
       <Content>
         <FlexRow>
           <Item>
@@ -42,4 +34,4 @@ const EventsCard = ({ title, location, dateTime, seats, firm, buttonText }) => {
   );
 };
 
-export default EventsCard;
+export default EventCard;

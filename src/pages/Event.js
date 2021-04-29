@@ -1,5 +1,5 @@
 import Figure from "../components/Figure/Figure";
-import EventsCard from "../components/EventsCard/EventsCard";
+import EventCard from "../components/EventCard/EventCard";
 import FlexRow from "../components/FlexRow/FlexRow";
 import Section from "../components/Section/Section";
 import DescriptionParagraph from "../components/DescriptionParagraph/DescriptionParagraph";
@@ -27,17 +27,12 @@ const Event = (props) => {
       <Section>
         <FlexRow>
           <Figure image={ImageUI} />
-          <EventsCard
-            title="bok"
+          <EventCard
             location="Hodnik FOI-a"
             dateTime="14.10.(9:00-16:00)"
             seats="20/50"
             firm="Speck"
             buttonText="Procitaj vise"
-            withoutShadow
-            withoutTitle
-            titleSize
-            paragraphSize
           />
         </FlexRow>
         <DescriptionParagraph />

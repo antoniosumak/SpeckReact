@@ -1,17 +1,12 @@
 import React from "react";
-import "./Figure.scss";
+import { Figure as FigureWrapper, Image } from "./FigureStyle";
 
+const Figure = ({ image }) => {
+  return (
+    <FigureWrapper>
+      <Image src={image} alt="UX/UI design workshop" />
+    </FigureWrapper>
+  );
+};
 
-const Figure = ({image}) => {
-    return ( 
-        <figure className="Figure">
-          <img
-            src={image}
-            alt="UX/UI design workshop"
-            class="Figure-Image"
-          />
-        </figure>
-     );
-}
- 
 export default Figure;

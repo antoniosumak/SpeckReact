@@ -1,35 +1,30 @@
-import React from 'react';
-import Button from '../Button/Button';
-import {Link} from "react-router-dom";
-import './Event.scss';
+import React from "react";
+import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import "./Event.scss";
 import {
-    Event as EventWrapper,
-    Figure,
-    Image,
-    Title,
-    Description,
-    imgAlt,
-    route
-} from './EventStyles';
+  Event as EventWrapper,
+  Figure,
+  Image,
+  Title,
+  Description,
+  imgAlt,
+  StyledLink,
+} from "./EventStyles";
 
-const Event = ({
-    image,
-    title,
-    description,
-    buttonText
-}) => {
-    return (
-        <EventWrapper>
-            <Figure>
-                <Image src={image} alt="Design"/>
-            </Figure>
-            <Title>{title}</Title>
-            <Description>{description}</Description>
-            <Link to="/event" className="Event-Link">
-                <Button text={buttonText}/>
-            </Link>
-        </EventWrapper>
-    );
-}
+const Event = ({ image, title, description, buttonText, route }) => {
+  return (
+    <EventWrapper>
+      <Figure>
+        <Image src={image} alt="Design" />
+      </Figure>
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+      <StyledLink to={route}>
+        <Button text={buttonText} />
+      </StyledLink>
+    </EventWrapper>
+  );
+};
 
 export default Event;

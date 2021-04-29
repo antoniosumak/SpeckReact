@@ -28,16 +28,19 @@ export const FlexRow = styled.div`
   @media screen and (${breakpoints.tablet}) {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 16px;
   }
 
   @media screen and (${breakpoints.desktop}) {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 16px;
   }
 
   @media screen and (${breakpoints.desktopLarge}) {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 16px;
   }
 `;
 
@@ -64,4 +67,9 @@ export const ButtonStyle = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+export const Center = styled.div`
+  display: grid;
+  place-items: center;
 `;
