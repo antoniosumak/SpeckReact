@@ -7,17 +7,19 @@ export const Section = styled.section`
 
   @media screen and (${breakpoints.tablet}) {
     padding: 80px 25px;
+    margin: 0 auto;
   }
 
   @media screen and (${breakpoints.desktop}) {
     padding: 80px 0;
-    max-width: 993px;
+    max-width: 1280px;
     margin: 0 auto;
   }
 
   @media screen and (${breakpoints.desktopLarge}) {
     padding: 100px 0;
-    max-width: 1280px;
+    max-width: 1700px;
+    margin: 0 auto;
   }
 `;
 

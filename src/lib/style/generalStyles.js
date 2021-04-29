@@ -18,7 +18,7 @@ export const Grid = styled.div`
     ${(props) => props.columns === 3 && "padding: 0 86px; "}
 
     ${(props) =>
-      props.columns === 4 && " grid-template-columns: repeat(4, 1fr); "}
+      props.columns === 4 && `grid-template-columns: repeat(4, 1fr); `}
   }
 `;
 
