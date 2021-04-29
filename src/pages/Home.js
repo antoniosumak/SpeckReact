@@ -7,7 +7,6 @@ import { Grid } from "../lib/style/generalStyles";
 import Event from "../components/Event/Event";
 import Loader from "react-loader-spinner";
 import { Center } from "../lib/style/generalStyles";
-import { Route } from "react-router-dom";
 
 const Home = () => {
   const [events, setEvents] = useState(0);
