@@ -27,7 +27,7 @@ const Events = () => {
       <Main>
         <Section>
           <Center>
-            <SearchBar placeholder="Proba" Provedi={Provedi} />
+            <SearchBar placeholder="Search event by title" Provedi={Provedi} />
           </Center>
           <Center>
             {!events ? (
