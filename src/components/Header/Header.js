@@ -15,6 +15,8 @@ import {
 const links = {
   home: "Home",
   events: "Events",
+  login: "Login",
+  register: "Register",
 };
 
 const Header = () => {
@@ -37,6 +39,8 @@ const Header = () => {
         <Nav>
           <NavItem to="/">{links.home}</NavItem>
           <NavItem to="/events">{links.events}</NavItem>
+          <NavItem to="/register">{links.register}</NavItem>
+          <NavItem to="/login">{links.login}</NavItem>
         </Nav>
       </Inner>
     </HeaderWrapper>
