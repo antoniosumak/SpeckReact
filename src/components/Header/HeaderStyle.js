@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { colors, breakpoints, transitionEase } from "../../lib/style/theme";
 
@@ -34,7 +34,7 @@ export const Inner = styled.div`
   }
 `;
 
-export const LogoContainer = styled(Link)`
+export const LogoContainer = styled(NavLink)`
   display: block;
   width: 50px;
 
@@ -56,7 +56,7 @@ export const Nav = styled.nav`
   }
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled(NavLink)`
   display: inline-block;
   text-decoration: none;
   color: ${colors.black};
@@ -65,7 +65,12 @@ export const NavItem = styled(Link)`
   font-size: 16px;
   margin: 15px 0;
   margin-right: 60px;
-  transition: ${transitionEase.transitionEase};
+  transition: ${transitionEase};
+  &:hover {
+    color: ${colors.red};
+  }
+
+  ${(props) => props.Link && `color : red !important;`}
 `;
 
 export const Hamburger = styled.div`

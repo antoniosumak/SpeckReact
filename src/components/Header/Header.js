@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import LogoImg from "../../assets/images/logo.png";
 import {
   HeaderWrapper,
@@ -17,6 +16,7 @@ const links = {
   events: "Events",
   login: "Login",
   register: "Register",
+  admin: "Admin",
 };
 
 const Header = () => {
@@ -37,10 +37,21 @@ const Header = () => {
           <NavHamburgerLine></NavHamburgerLine>
         </Hamburger>
         <Nav>
-          <NavItem to="/">{links.home}</NavItem>
-          <NavItem to="/events">{links.events}</NavItem>
-          <NavItem to="/register">{links.register}</NavItem>
-          <NavItem to="/login">{links.login}</NavItem>
+          <NavItem to="/" exact activeStyle={{ color: "#d33e3e" }}>
+            {links.home}
+          </NavItem>
+          <NavItem to="/events" exact activeStyle={{ color: "#d33e3e" }}>
+            {links.events}
+          </NavItem>
+          <NavItem to="/register" exact activeStyle={{ color: "#d33e3e" }}>
+            {links.register}
+          </NavItem>
+          <NavItem to="/login" exact activeStyle={{ color: "#d33e3e" }}>
+            {links.login}
+          </NavItem>
+          <NavItem to="/admin" exact activeStyle={{ color: "#d33e3e" }}>
+            {links.admin}
+          </NavItem>
         </Nav>
       </Inner>
     </HeaderWrapper>
