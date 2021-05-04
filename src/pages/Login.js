@@ -43,11 +43,11 @@ const Login = () => {
   });
   return (
     <>
-      <Section>
+      <Section title="Login">
         <Center>
           {!isLoading ? (
             <Form onSubmit={formik.handleSubmit}>
-              <FormRow>
+              <FormRow marginBottom={true}>
                 <InputLabel htmlFor="email">Email</InputLabel>
                 <InputText
                   id="email"
@@ -58,7 +58,7 @@ const Login = () => {
                   <InputError>{formik.errors.email}</InputError>
                 ) : null}
               </FormRow>
-              <FormRow>
+              <FormRow marginBottom={true}>
                 <InputLabel htmlFor="password">Password</InputLabel>
                 <InputText
                   id="password"

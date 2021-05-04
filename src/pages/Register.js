@@ -57,11 +57,11 @@ const Register = () => {
   });
   return (
     <>
-      <Section>
+      <Section title="Register">
         <Center>
           {!isLoading ? (
             <Form onSubmit={formik.handleSubmit}>
-              <FormRow>
+              <FormRow marginBottom={true}>
                 <InputLabel htmlFor="firstName">First name</InputLabel>
                 <InputText
                   id="firstName"
@@ -72,7 +72,7 @@ const Register = () => {
                   <InputError>{formik.errors.firstName}</InputError>
                 ) : null}
               </FormRow>
-              <FormRow>
+              <FormRow marginBottom={true}>
                 <InputLabel htmlFor="lastName">Last name</InputLabel>
                 <InputText
                   id="lastName"
@@ -83,7 +83,7 @@ const Register = () => {
                   <InputError>{formik.errors.lastName}</InputError>
                 ) : null}
               </FormRow>
-              <FormRow>
+              <FormRow marginBottom={true}>
                 <InputLabel htmlFor="email">Email</InputLabel>
                 <InputText
                   id="email"
@@ -94,7 +94,7 @@ const Register = () => {
                   <InputError>{formik.errors.email}</InputError>
                 ) : null}
               </FormRow>
-              <FormRow>
+              <FormRow marginBottom={true}>
                 <InputLabel htmlFor="password">Password</InputLabel>
                 <InputText
                   id="password"
@@ -105,7 +105,7 @@ const Register = () => {
                   <InputError>{formik.errors.password}</InputError>
                 ) : null}
               </FormRow>
-              <FormRow>
+              <FormRow marginBottom={true}>
                 <InputLabel htmlFor="passwordConfirmation">
                   Confirm password
                 </InputLabel>
@@ -119,7 +119,7 @@ const Register = () => {
                   <InputError>{formik.errors.passwordConfirmation}</InputError>
                 ) : null}
               </FormRow>
-              <FormRow>
+              <FormRow marginBottom={true}>
                 <CheckBoxWrapper>
                   <InputCheckbox
                     id="isAdmin"

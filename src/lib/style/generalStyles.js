@@ -86,7 +86,7 @@ export const Form = styled.form`
 `;
 
 export const FormRow = styled.div`
-  margin-bottom: 32px;
+  ${(props) => props.marginBottom === true && "margin-bottom: 32px;"}
   &::last-child {
     margin-bottom: 0px;
   }
@@ -159,4 +159,34 @@ export const InputError = styled.p`
   font-size: 14px;
   color: ${colors.red};
   padding-top: 8px;
+`;
+
+export const Select = styled.select`
+  border: 1px solid ${colors.lightGrey};
+  border-radius: 6px;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  outline: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  appearance: none;
+
+  &:focus {
+    border-color: ${colors.yellow};
+  }
+
+  @media screen and (${breakpoints.desktop}) {
+    font-size: 16px;
+  }
+`;
+
+export const Option = styled.option`
+  color: ${colors.red};
+`;
+
+export const FormTwoColums = styled.div`
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: repeat(2, 1fr);
 `;
