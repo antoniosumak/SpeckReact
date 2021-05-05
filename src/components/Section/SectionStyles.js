@@ -3,7 +3,7 @@ import { colors, breakpoints, transitionEase } from "../../lib/style/theme";
 
 export const Section = styled.section`
   ${(props) => props.withoutTopPadding && "padding-top: none !important;"}
-  ${(props) => props.popUp === true && "background-color : rgba(0, 0, 0, 0.7);"}
+
   padding: 60px 15px;
 
   @media screen and (${breakpoints.tablet}) {

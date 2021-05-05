@@ -22,9 +22,12 @@ export const Grid = styled.div`
   }
 `;
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  height: 100%;
+`;
 
 export const FlexRow = styled.div`
+  position: relative;
   @media screen and (${breakpoints.tablet}) {
     display: flex;
     justify-content: space-between;
@@ -33,7 +36,7 @@ export const FlexRow = styled.div`
 
   @media screen and (${breakpoints.desktop}) {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 16px;
   }
 

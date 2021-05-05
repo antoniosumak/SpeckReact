@@ -15,6 +15,7 @@ import {
 } from "../../lib/style/generalStyles.js";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
+import Section from "../Section/Section";
 
 const firm = ["Speck", "Five", "Infinum", "Cinnamon"];
 const options = [
@@ -24,7 +25,7 @@ const options = [
   { value: "backend", label: "#backend" },
 ];
 const Table = () => {
-  const [isOpened, SetIsOpened] = useState(true);
+  const [isOpened, SetIsOpened] = useState(false);
   const [events, setEvents] = useState([]);
 
   const formik = useFormik({
@@ -56,11 +57,12 @@ const Table = () => {
       resetForm({});
     },
   });
+
   return (
     <>
       <Center>
         {isOpened && (
-          <Modal>
+          <Modal title="Add event" hidePopup={() => SetIsOpened(false)}>
             <Form>
               <FormRow marginBottom={true}>
                 <InputLabel htmlFor="title">Title</InputLabel>
@@ -159,7 +161,9 @@ const Table = () => {
                     <Select id="company" {...formik.getFieldProps("company")}>
                       <Option value="">Select...</Option>
                       {firm.map((prop) => (
-                        <Option value={prop}>{prop}</Option>
+                        <Option value={prop} key={prop}>
+                          {prop}
+                        </Option>
                       ))}
                     </Select>
                     {formik.touched.company && formik.errors.company ? (
@@ -173,6 +177,7 @@ const Table = () => {
           </Modal>
         )}
       </Center>
+      <Button text="Open Modal" onPress={() => SetIsOpened(true)}></Button>
     </>
   );
 };

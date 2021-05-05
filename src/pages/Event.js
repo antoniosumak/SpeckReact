@@ -11,7 +11,7 @@ const EventTitle = "UX/UI workshop";
 
 const Event = (props) => {
   const [events, setEvents] = useState(null);
-  const [event, setEvent] = useState(null);
+  const [event, setEvent] = useState("");
   const routeEventId = parseInt(props.match.params.id);
 
   useEffect(() => {
@@ -26,12 +26,12 @@ const Event = (props) => {
     <>
       <Section>
         <FlexRow>
-          <Figure image={ImageUI} />
+          <Figure image={event.imageUrl} />
           <EventCard
-            location="Hodnik FOI-a"
-            dateTime="14.10.(9:00-16:00)"
-            seats="20/50"
-            firm="Speck"
+            location={event.location}
+            dateTime={event.dateTime}
+            seats={event.availability}
+            firm={event.company}
             buttonText="Procitaj vise"
           />
         </FlexRow>
