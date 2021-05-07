@@ -25,7 +25,7 @@ const Events = () => {
   return (
     <>
       <Main>
-        <Section>
+        <Section gridSize={true}>
           <Center>
             <SearchBar placeholder="Search event by title" Provedi={Provedi} />
           </Center>

@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { useFormik } from "formik";
+import { FiTrash2 } from "react-icons/fi";
 import * as Yup from "yup";
 import {
   Form,
@@ -12,10 +13,21 @@ import {
   Option,
   Select,
   FormTwoColums,
+  IconWrapp,
 } from "../../lib/style/generalStyles.js";
+import {
+  TableWrapper,
+  TableHeader,
+  TableContent,
+  Tr,
+  Td,
+  Th,
+  EmptyTable,
+  EmptyTableText,
+} from "./TableStyles";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
-import Section from "../Section/Section";
+import ButtonTable from "../ButtonTable/ButtonTable";
 
 const firm = ["Speck", "Five", "Infinum", "Cinnamon"];
 const options = [
@@ -50,20 +62,26 @@ const Table = () => {
       capacity: Yup.string().required("Capacity is required"),
       company: Yup.string().required("Company is required"),
     }),
+
     onSubmit: (values, { resetForm }) => {
       setEvents([...events, values]);
-
       SetIsOpened(false);
       resetForm({});
     },
   });
+
+  const handleDeleteEvent = (index) => {
+    let eventArray = [...events];
+    eventArray.splice(index, 1);
+    setEvents(eventArray);
+  };
 
   return (
     <>
       <Center>
         {isOpened && (
           <Modal title="Add event" hidePopup={() => SetIsOpened(false)}>
-            <Form>
+            <Form onSubmit={formik.handleSubmit}>
               <FormRow marginBottom={true}>
                 <InputLabel htmlFor="title">Title</InputLabel>
                 <InputText
@@ -177,7 +195,46 @@ const Table = () => {
           </Modal>
         )}
       </Center>
-      <Button text="Open Modal" onPress={() => SetIsOpened(true)}></Button>
+      <ButtonTable text="Add event" showPopUp={() => SetIsOpened(true)} />
+
+      {events.length > 0 ? (
+        <TableWrapper>
+          <TableHeader>
+            <Tr>
+              <Th>ID</Th>
+              <Th>Naslov</Th>
+              <Th>Datum</Th>
+              <Th>Vrijeme od</Th>
+              <Th>Vrijeme do</Th>
+              <Th>Kapacitet</Th>
+              <Th>Firma</Th>
+              <Th></Th>
+            </Tr>
+          </TableHeader>
+          {events.map((event, index) => (
+            <TableContent>
+              <Tr key={index}>
+                <Td>{event.id}</Td>
+                <Td>{event.title}</Td>
+                <Td>{event.date}</Td>
+                <Td>{event.timeFrom}</Td>
+                <Td>{event.timeTo}</Td>
+                <Td>{event.capacity}</Td>
+                <Td>{event.company}</Td>
+                <Td>
+                  <IconWrapp onClick={() => handleDeleteEvent(index)}>
+                    <FiTrash2 />
+                  </IconWrapp>
+                </Td>
+              </Tr>
+            </TableContent>
+          ))}
+        </TableWrapper>
+      ) : (
+        <EmptyTable>
+          <EmptyTableText>The table is empty!</EmptyTableText>
+        </EmptyTable>
+      )}
     </>
   );
 };

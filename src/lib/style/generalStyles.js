@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colors, breakpoints, transitionEase } from "../../lib/style/theme";
 import { Link, NavLink } from "react-router-dom";
 
@@ -22,9 +22,7 @@ export const Grid = styled.div`
   }
 `;
 
-export const Main = styled.main`
-  height: 100%;
-`;
+export const Main = styled.main``;
 
 export const FlexRow = styled.div`
   position: relative;
@@ -189,7 +187,40 @@ export const Option = styled.option`
 `;
 
 export const FormTwoColums = styled.div`
-  display: grid;
-  grid-gap: 32px;
-  grid-template-columns: repeat(2, 1fr);
+  @media screen and (${breakpoints.mobileLarge}) {
+    display: grid;
+    grid-gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+export const ButtonTable = styled.button`
+  display: block;
+  text-decoration: none;
+  width: 150px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid ${colors.black};
+  border-radius: 6px;
+  background: ${colors.white};
+  color: ${colors.black};
+  transition: ${transitionEase};
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+
+  &:hover {
+    cursor: pointer;
+    border-color: ${colors.red};
+    color: ${colors.red};
+  }
+`;
+
+export const IconWrapp = styled.div`
+  font-size: 24px;
+  cursor: pointer;
+  transition: ${transitionEase};
+
+  &:hover {
+    color: ${colors.red};
+  }
 `;
