@@ -4,7 +4,7 @@ import { colors, boxShadow } from "../../lib/style/theme";
 export const ModalOverlay = styled.div`
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   bottom: 0px;
   top: 0px;
   background-color: ${colors.blackOverlay};

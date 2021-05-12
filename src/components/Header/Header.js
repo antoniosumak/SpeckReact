@@ -17,9 +17,10 @@ const links = {
   login: "Login",
   register: "Register",
   admin: "Admin",
+  logout: "Logout",
 };
 
-const Header = () => {
+const Header = ({ userLoggedIn, userIsAdmin }) => {
   function HamburgerClick(e) {
     e.preventDefault();
     console.log("Habmurger je kliknut!");
@@ -43,15 +44,26 @@ const Header = () => {
           <NavItem to="/events" exact activeStyle={{ color: "#d33e3e" }}>
             {links.events}
           </NavItem>
-          <NavItem to="/register" exact activeStyle={{ color: "#d33e3e" }}>
-            {links.register}
-          </NavItem>
-          <NavItem to="/login" exact activeStyle={{ color: "#d33e3e" }}>
-            {links.login}
-          </NavItem>
-          <NavItem to="/admin" exact activeStyle={{ color: "#d33e3e" }}>
-            {links.admin}
-          </NavItem>
+          {userLoggedIn == "false" ? (
+            <NavItem to="/register" exact activeStyle={{ color: "#d33e3e" }}>
+              {links.register}
+            </NavItem>
+          ) : null}
+          {userLoggedIn == "false" ? (
+            <NavItem to="/login" exact activeStyle={{ color: "#d33e3e" }}>
+              {links.login}
+            </NavItem>
+          ) : null}
+          {userIsAdmin === "true" && (
+            <NavItem to="/admin" exact activeStyle={{ color: "#d33e3e" }}>
+              {links.admin}
+            </NavItem>
+          )}
+          {userLoggedIn == "true" ? (
+            <NavItem onClick={() => localStorage.clear()} to="/">
+              Logout
+            </NavItem>
+          ) : null}
         </Nav>
       </Inner>
     </HeaderWrapper>

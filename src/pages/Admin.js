@@ -1,7 +1,7 @@
 import React from "react";
 import Section from "../components/Section/Section";
 import Table from "../components/Table/Table";
-import { Center } from "../lib/style/generalStyles";
+import { withRouter } from "react-router-dom";
 
 const Admin = () => {
   return (
@@ -13,4 +13,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default withRouter(Admin);

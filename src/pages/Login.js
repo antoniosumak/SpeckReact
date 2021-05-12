@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import Section from "../components/Section/Section";
 import Loader from "react-loader-spinner";
 import Button from "../components/Button/Button";
+
 import {
   Form,
   FormRow,
@@ -14,10 +15,16 @@ import {
   InputCheckbox,
   InputError,
   Center,
+  SuccessMessage,
 } from "../lib/style/generalStyles";
+import { loginUser } from "../../src/api/login";
+import { getAllUsers } from "../../src/api/user";
 
-const Login = () => {
+const Login = ({ setIsAdmin, setIsLoggedIn }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isRequestFinished, setIsRequestFinished] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -33,18 +40,52 @@ const Login = () => {
         .required("Password is required"),
     }),
 
-    onSubmit: (values) => {
+    onSubmit: async (values, { resetForm }) => {
       setIsLoading(true);
-      setTimeout(() => {
+      setIsError(false);
+      setIsRequestFinished(false);
+
+      try {
+        const response = await loginUser(values);
+        const users = await getAllUsers(response.token);
+        const isAdmin = users.find(
+          (user) => user.email === values.email
+        ).isAdmin;
+
+        if (isAdmin) {
+          setIsAdmin("true");
+        } else {
+          setIsAdmin("false");
+        }
+
+        localStorage.setItem("authToken", response.token);
+        localStorage.setItem("isAdmin", isAdmin);
+        resetForm({});
+        setIsError(false);
+        setIsLoggedIn("true");
+
+        setSuccessMessage("Logged in!");
+
+        setTimeout(() => {
+          setIsRequestFinished(false);
+        }, 4000);
+      } catch (error) {
+        setIsError(true);
+        setSuccessMessage("Something went wrong!");
+        setIsLoggedIn("false");
+      } finally {
         setIsLoading(false);
-        alert(JSON.stringify(values));
-      }, 2000);
+        setIsRequestFinished(true);
+      }
     },
   });
   return (
     <>
       <Section title="Login">
         <Center>
+          {isRequestFinished && (
+            <SuccessMessage isError={isError}>{successMessage}</SuccessMessage>
+          )}
           {!isLoading ? (
             <Form onSubmit={formik.handleSubmit}>
               <FormRow marginBottom={true}>
