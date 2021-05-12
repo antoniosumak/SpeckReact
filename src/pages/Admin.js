@@ -13,4 +13,4 @@ const Admin = () => {
   );
 };
 
-export default withRouter(Admin);
+export default Admin;

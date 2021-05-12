@@ -45,7 +45,7 @@ const App = () => {
     <>
       <Header userLoggedIn={isLoggedIn} userIsAdmin={isAdmin} />
       <Main>
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/events" component={Events} />
         <Route path="/event/:id" component={Event} />
         <Route path="/register" component={Register}></Route>
@@ -55,9 +55,7 @@ const App = () => {
             <Login setIsAdmin={setIsAdmin} setIsLoggedIn={setIsLoggedIn} />
           )}
         ></Route>
-        <Router>
-          <ProtectedRoute path="/admin" component={Admin} isAdmin={isAdmin} />
-        </Router>
+        <ProtectedRoute path="/admin" component={Admin} isAdmin={isAdmin} />
       </Main>
       <Footer />
     </>
