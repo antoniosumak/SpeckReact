@@ -17,8 +17,8 @@ import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 
 const App = () => {
-  const [isAdmin, setIsAdmin] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState("false");
+  const [isAdmin, setIsAdmin] = useState("true");
+  const [isLoggedIn, setIsLoggedIn] = useState("true");
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
