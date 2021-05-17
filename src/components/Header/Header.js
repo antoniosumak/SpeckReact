@@ -10,6 +10,7 @@ import {
   Hamburger,
   NavHamburgerLine,
 } from "./HeaderStyle";
+import { colors } from "../../lib/style/theme";
 
 const links = {
   home: "Home",
@@ -38,24 +39,24 @@ const Header = ({ userLoggedIn, userIsAdmin }) => {
           <NavHamburgerLine></NavHamburgerLine>
         </Hamburger>
         <Nav>
-          <NavItem to="/" exact activeStyle={{ color: "#d33e3e" }}>
+          <NavItem to="/" exact activeStyle={{ color: colors.red }}>
             {links.home}
           </NavItem>
-          <NavItem to="/events" exact activeStyle={{ color: "#d33e3e" }}>
+          <NavItem to="/events" exact activeStyle={{ color: colors.red }}>
             {links.events}
           </NavItem>
           {userLoggedIn == "false" ? (
-            <NavItem to="/register" exact activeStyle={{ color: "#d33e3e" }}>
+            <NavItem to="/register" exact activeStyle={{ color: colors.red }}>
               {links.register}
             </NavItem>
           ) : null}
           {userLoggedIn == "false" ? (
-            <NavItem to="/login" exact activeStyle={{ color: "#d33e3e" }}>
+            <NavItem to="/login" exact activeStyle={{ color: colors.red }}>
               {links.login}
             </NavItem>
           ) : null}
           {userIsAdmin === "true" && (
-            <NavItem to="/admin" exact activeStyle={{ color: "#d33e3e" }}>
+            <NavItem to="/admin" exact activeStyle={{ color: colors.red }}>
               {links.admin}
             </NavItem>
           )}

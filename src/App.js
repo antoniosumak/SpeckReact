@@ -1,6 +1,6 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useContext, useEffect, useState } from "react";
 import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
-import "./App.scss";
+import { AuthContext } from "./context/AuthContext";
 
 //Komponente
 import Header from "./components/Header/Header";
@@ -17,16 +17,16 @@ import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 
 const App = () => {
-  const [isAdmin, setIsAdmin] = useState("true");
-  const [isLoggedIn, setIsLoggedIn] = useState("true");
+  const { isAdmin, isLoggedIn, setIsAdmin, setIsLoggedIn } =
+    useContext(AuthContext);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token == null) {
-      setIsLoggedIn("false");
+      setIsLoggedIn(false);
     }
     if (token) {
-      setIsLoggedIn("true");
+      setIsLoggedIn(true);
     } else {
       setIsLoggedIn("false");
     }
