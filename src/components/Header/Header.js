@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import LogoImg from "../../assets/images/logo.png";
 import {
   HeaderWrapper,
@@ -21,11 +22,12 @@ const links = {
   logout: "Logout",
 };
 
-const Header = ({ userLoggedIn, userIsAdmin }) => {
+const Header = () => {
   function HamburgerClick(e) {
     e.preventDefault();
     console.log("Habmurger je kliknut!");
   }
+  const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
   return (
     <HeaderWrapper>
@@ -45,22 +47,22 @@ const Header = ({ userLoggedIn, userIsAdmin }) => {
           <NavItem to="/events" exact activeStyle={{ color: colors.red }}>
             {links.events}
           </NavItem>
-          {userLoggedIn == "false" ? (
+          {!isLoggedIn ? (
             <NavItem to="/register" exact activeStyle={{ color: colors.red }}>
               {links.register}
             </NavItem>
           ) : null}
-          {userLoggedIn == "false" ? (
+          {!isLoggedIn ? (
             <NavItem to="/login" exact activeStyle={{ color: colors.red }}>
               {links.login}
             </NavItem>
           ) : null}
-          {userIsAdmin === "true" && (
+          {isAdmin && (
             <NavItem to="/admin" exact activeStyle={{ color: colors.red }}>
               {links.admin}
             </NavItem>
           )}
-          {userLoggedIn == "true" ? (
+          {isLoggedIn ? (
             <NavItem onClick={() => localStorage.clear()} to="/">
               Logout
             </NavItem>

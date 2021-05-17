@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
-const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const { isAdmin } = useContext(AuthContext);
   return (
     <>
-      {isAdmin === "true" ? (
+      {isAdmin ? (
         <Route
           {...rest}
           render={() => {

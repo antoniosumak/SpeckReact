@@ -1,6 +1,7 @@
 import React, { Component, useContext, useEffect, useState } from "react";
 import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
+import "./App.scss";
 
 //Komponente
 import Header from "./components/Header/Header";
@@ -28,34 +29,29 @@ const App = () => {
     if (token) {
       setIsLoggedIn(true);
     } else {
-      setIsLoggedIn("false");
+      setIsLoggedIn(false);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, setIsLoggedIn]);
 
   useEffect(() => {
     const adminStatus = localStorage.getItem("isAdmin");
     if (adminStatus === "true") {
-      setIsAdmin("true");
+      setIsAdmin(true);
     } else {
-      setIsAdmin("false");
+      setIsAdmin(false);
     }
-  }, [isAdmin]);
+  }, [isAdmin, setIsAdmin]);
 
   return (
     <>
-      <Header userLoggedIn={isLoggedIn} userIsAdmin={isAdmin} />
+      <Header />
       <Main>
         <Route exact path="/" component={Home} />
         <Route path="/events" component={Events} />
         <Route path="/event/:id" component={Event} />
         <Route path="/register" component={Register}></Route>
-        <Route
-          path="/login"
-          render={() => (
-            <Login setIsAdmin={setIsAdmin} setIsLoggedIn={setIsLoggedIn} />
-          )}
-        ></Route>
-        <ProtectedRoute path="/admin" component={Admin} isAdmin={isAdmin} />
+        <Route path="/login" render={() => <Login />}></Route>
+        <ProtectedRoute path="/admin" component={Admin} />
       </Main>
       <Footer />
     </>

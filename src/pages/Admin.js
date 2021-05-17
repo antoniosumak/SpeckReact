@@ -1,7 +1,6 @@
 import React from "react";
 import Section from "../components/Section/Section";
 import Table from "../components/Table/Table";
-import { withRouter } from "react-router-dom";
 
 const Admin = () => {
   return (

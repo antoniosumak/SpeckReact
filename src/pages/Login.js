@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Section from "../components/Section/Section";
@@ -20,11 +21,12 @@ import {
 import { loginUser } from "../../src/api/login";
 import { getAllUsers } from "../../src/api/user";
 
-const Login = ({ setIsAdmin, setIsLoggedIn }) => {
+const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [isRequestFinished, setIsRequestFinished] = useState(false);
+  const { setIsAdmin, setIsLoggedIn } = useContext(AuthContext);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -53,16 +55,16 @@ const Login = ({ setIsAdmin, setIsLoggedIn }) => {
         ).isAdmin;
 
         if (isAdmin) {
-          setIsAdmin("true");
+          setIsAdmin(true);
         } else {
-          setIsAdmin("false");
+          setIsAdmin(false);
         }
 
         localStorage.setItem("authToken", response.token);
         localStorage.setItem("isAdmin", isAdmin);
         resetForm({});
         setIsError(false);
-        setIsLoggedIn("true");
+        setIsLoggedIn(true);
 
         setSuccessMessage("Logged in!");
 
@@ -72,7 +74,7 @@ const Login = ({ setIsAdmin, setIsLoggedIn }) => {
       } catch (error) {
         setIsError(true);
         setSuccessMessage("Something went wrong!");
-        setIsLoggedIn("false");
+        setIsLoggedIn(false);
       } finally {
         setIsLoading(false);
         setIsRequestFinished(true);
