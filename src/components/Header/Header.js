@@ -27,7 +27,12 @@ const Header = () => {
     e.preventDefault();
     console.log("Habmurger je kliknut!");
   }
-  const { isLoggedIn, isAdmin } = useContext(AuthContext);
+  const { isLoggedIn, isAdmin, setIsAdmin, setIsLoggedIn } =
+    useContext(AuthContext);
+  const handleLogout = () => {
+    setIsAdmin(false);
+    setIsLoggedIn(false);
+  };
 
   return (
     <HeaderWrapper>
@@ -63,7 +68,13 @@ const Header = () => {
             </NavItem>
           )}
           {isLoggedIn ? (
-            <NavItem onClick={() => localStorage.clear()} to="/">
+            <NavItem
+              onClick={() => {
+                localStorage.clear();
+                handleLogout();
+              }}
+              to="/"
+            >
               Logout
             </NavItem>
           ) : null}
