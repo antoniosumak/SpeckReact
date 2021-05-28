@@ -2,6 +2,13 @@ import styled, { css } from "styled-components";
 import { colors, breakpoints, transitionEase } from "../../lib/style/theme";
 import { Link, NavLink } from "react-router-dom";
 
+export const GridHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
 export const Grid = styled.div`
   display: grid;
   row-gap: 32px;
@@ -241,4 +248,8 @@ export const SuccessMessage = styled.p`
   @media screen and (${breakpoints.mobileLarge}) {
     max-width: 400px;
   }
+`;
+
+export const Counter = styled.p`
+  font-size: 14px;
 `;

@@ -7,16 +7,17 @@ import { Grid } from "../lib/style/generalStyles";
 import Event from "../components/Event/Event";
 import Loader from "react-loader-spinner";
 import { Center } from "../lib/style/generalStyles";
+import eventsStore from "../store/EventsStore";
+import { observer } from "mobx-react";
 
 const Home = () => {
-  const [events, setEvents] = useState(0);
-
   useEffect(() => {
-    setTimeout(() => {
-      setEvents(eventMock);
-      console.log(events);
-    }, 1000);
-  }, [events]);
+    if (eventsStore.eventsLength === 0) {
+      setTimeout(() => {
+        eventsStore.setEvents(eventMock);
+      }, 1000);
+    }
+  }, []);
 
   return (
     <>
@@ -24,16 +25,16 @@ const Home = () => {
         <Hero />
         <Section title="Featured events">
           <Center>
-            {!events ? (
+            {eventsStore.eventsLength === 0 ? (
               <Loader
                 type="TailSpin"
                 color="#e4b43c"
                 height={100}
-                width={100} //3 secs
+                width={100}
               />
             ) : (
               <Grid columns={3}>
-                {events.map(
+                {eventsStore.getEvents.map(
                   (event) =>
                     event.isFeatured && (
                       <Event
@@ -56,4 +57,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default observer(Home);
