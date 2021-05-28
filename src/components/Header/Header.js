@@ -1,33 +1,87 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import "./Header.scss";
-import Logo from "../../assets/images/logo.png";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import LogoImg from "../../assets/images/logo.png";
+import {
+  HeaderWrapper,
+  Inner,
+  LogoContainer,
+  Logo,
+  Nav,
+  NavItem,
+  Hamburger,
+  NavHamburgerLine,
+} from "./HeaderStyle";
+import { colors } from "../../lib/style/theme";
 
 const links = {
-    home: "Home",
-    events: "Events",
-}
+  home: "Home",
+  events: "Events",
+  login: "Login",
+  register: "Register",
+  admin: "Admin",
+  logout: "Logout",
+};
 
 const Header = () => {
-    return ( 
-        <header className="Header">
-        <div className="Header-Inner">
-           <Link to ="/" className="Header-LogoContainer">
-                <img src={Logo} className="Header-Logo" alt = "Logo fakulteta"/>
-            </Link>
-            <div className="Header-NavHamburger">
-                <div className="Header-NavHamburgerLine"></div>
-                <div className="Header-NavHamburgerLine"></div>
-                <div className="Header-NavHamburgerLine"></div>
-            </div>
-            <nav className="Header-Nav">
-                <Link className="Header-NavItem" to="/">{links.home}</Link>
-                <Link className="Header-NavItem" to="/events">{links.events}</Link>
-            </nav>
-        </div>
+  function HamburgerClick(e) {
+    e.preventDefault();
+    console.log("Habmurger je kliknut!");
+  }
+  const { isLoggedIn, isAdmin, setIsAdmin, setIsLoggedIn } =
+    useContext(AuthContext);
+  const handleLogout = () => {
+    setIsAdmin(false);
+    setIsLoggedIn(false);
+  };
 
-    </header>
-     );
-}
- 
+  return (
+    <HeaderWrapper>
+      <Inner>
+        <LogoContainer to="/">
+          <Logo src={LogoImg} alt="Logo fakulteta" />
+        </LogoContainer>
+        <Hamburger onClick={HamburgerClick}>
+          <NavHamburgerLine></NavHamburgerLine>
+          <NavHamburgerLine></NavHamburgerLine>
+          <NavHamburgerLine></NavHamburgerLine>
+        </Hamburger>
+        <Nav>
+          <NavItem to="/" exact activeStyle={{ color: colors.red }}>
+            {links.home}
+          </NavItem>
+          <NavItem to="/events" exact activeStyle={{ color: colors.red }}>
+            {links.events}
+          </NavItem>
+          {!isLoggedIn ? (
+            <NavItem to="/register" exact activeStyle={{ color: colors.red }}>
+              {links.register}
+            </NavItem>
+          ) : null}
+          {!isLoggedIn ? (
+            <NavItem to="/login" exact activeStyle={{ color: colors.red }}>
+              {links.login}
+            </NavItem>
+          ) : null}
+          {isAdmin && (
+            <NavItem to="/admin" exact activeStyle={{ color: colors.red }}>
+              {links.admin}
+            </NavItem>
+          )}
+          {isLoggedIn ? (
+            <NavItem
+              onClick={() => {
+                localStorage.clear();
+                handleLogout();
+              }}
+              to="/"
+            >
+              Logout
+            </NavItem>
+          ) : null}
+        </Nav>
+      </Inner>
+    </HeaderWrapper>
+  );
+};
+
 export default Header;

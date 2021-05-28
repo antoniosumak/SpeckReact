@@ -1,12 +1,8 @@
 import React from "react";
-import "./FlexRow.scss";
+import { FlexRow as FlexRowWrapper } from "../../lib/style/generalStyles";
 
 const FlexRow = (props) => {
-    return ( 
-        <div className="Flex">
-        {props.children}
-        </div>
-     );
-}
- 
+  return <FlexRowWrapper>{props.children}</FlexRowWrapper>;
+};
+
 export default FlexRow;

@@ -1,12 +1,8 @@
 import React from "react";
-import "./Main.scss";
+import { Main as MainWrapper } from "../../lib/style/generalStyles";
 
 const Main = (props) => {
-    return ( 
-        <main>
-            {props.children}
-        </main>
-     );
-}
- 
+  return <MainWrapper>{props.children}</MainWrapper>;
+};
+
 export default Main;
